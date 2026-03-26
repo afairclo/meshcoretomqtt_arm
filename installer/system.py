@@ -804,7 +804,11 @@ def install_meshcore_decoder(install_dir: str, svc_user: str) -> bool:
         script = f"""
             export NVM_DIR='{nvm_dir}'
             [ -s "$NVM_DIR/nvm.sh" ] || curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | NVM_DIR='{nvm_dir}' bash
-            . "$NVM_DIR/nvm.sh" && nvm install 22 && nvm use 22
+            . "$NVM_DIR/nvm.sh"
+            echo 'export NVM_NODEJS_ORG_MIRROR=https://unofficial-builds.nodejs.org/download/release' >> ~/.bashrc
+            export NVM_NODEJS_ORG_MIRROR=https://unofficial-builds.nodejs.org/download/release
+            nvm install 22 && nvm use 22
+            nvm alias default 22
             npm install -g @michaelhart/meshcore-decoder
             NODE_VERSION=$(node --version 2>/dev/null || true)
             if [ -n "$NODE_VERSION" ] && [ -d '{nvm_dir}/versions/node/'"$NODE_VERSION" ]; then
@@ -820,7 +824,11 @@ def install_meshcore_decoder(install_dir: str, svc_user: str) -> bool:
         script = f"""
             export NVM_DIR='{nvm_dir}'
             [ -s "$NVM_DIR/nvm.sh" ] || curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | NVM_DIR='{nvm_dir}' bash
-            . "$NVM_DIR/nvm.sh" && nvm install 22 && nvm use 22
+            . "$NVM_DIR/nvm.sh"
+            echo 'export NVM_NODEJS_ORG_MIRROR=https://unofficial-builds.nodejs.org/download/release' >> ~/.bashrc
+            export NVM_NODEJS_ORG_MIRROR=https://unofficial-builds.nodejs.org/download/release
+            nvm install 22 && nvm use 22
+            nvm alias default 22
             npm install -g @michaelhart/meshcore-decoder
             NODE_VERSION=$(node --version 2>/dev/null || true)
             if [ -n "$NODE_VERSION" ] && [ -d '{nvm_dir}/versions/node/'"$NODE_VERSION" ]; then
