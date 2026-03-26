@@ -43,7 +43,7 @@ def create_auth_token(public_key_hex: str, private_key_hex: str, expiry_seconds:
             cmd,
             capture_output=True,
             text=True,
-            timeout=10
+            timeout=60
         )
         
         if result.returncode != 0:
